@@ -5,6 +5,7 @@ from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
 
 # bring in our OPENAI_API_KEY
 from dotenv import load_dotenv
+
 load_dotenv()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -12,7 +13,7 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 # use SimpleDirectoryReader to load our file
 documents = SimpleDirectoryReader("data").load_data()
 
-#VectorStoreIndex?
+# VectorStoreIndex?
 
 # create an index from the documents
 index = VectorStoreIndex.from_documents(documents)
