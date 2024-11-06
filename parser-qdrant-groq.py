@@ -17,6 +17,11 @@ llamaparse_api_key = os.getenv("LLAMA_CLOUD_API_KEY")
 import pickle
 
 
+def load_parsing_instructions(file):
+    with open(file, "r") as f:
+        return f.read()
+
+
 # Define a function to load parsed data if available, or parse if not
 def load_or_parse_data():
     data_file = "./data/parsed_data.pkl"
@@ -28,7 +33,11 @@ def load_or_parse_data():
     else:
         # Perform the parsing step and store the result in llama_parse_documents
         llama_parse_documents = LlamaParse(
-            api_key=llamaparse_api_key, result_type="markdown"
+            api_key=llamaparse_api_key,
+            result_type="markdown",
+            parsing_instruction=load_parsing_instructions(
+                "./data/parsing_instructions.txt"
+            ),
         ).load_data(["./data/saasbook-1.2.2_2.pdf"])
 
         # Save the parsed data to a file
@@ -49,7 +58,7 @@ print("Done loading or parsing data.")
 ######## QDRANT ###########
 
 from llama_index.vector_stores.qdrant import QdrantVectorStore
-from llama_index.core import VectorStoreIndex, StorageContext
+from llama_index.core import VectorStoreIndex, StorageContext, load_index_from_storage
 
 import qdrant_client
 
