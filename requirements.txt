@@ -8,3 +8,4 @@ llama-index-embeddings-ollama
 llama_index-llms-ollama
 python-dotenv
 llama-index-llms-groq
+onnxruntime<1.20 # https://github.com/qdrant/fastembed/issues/385
