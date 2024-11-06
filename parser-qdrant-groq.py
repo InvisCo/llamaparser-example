@@ -123,23 +123,34 @@ index = VectorStoreIndex.from_documents(
 print("Starting query engine...")
 query_engine = index.as_query_engine()
 
-print("====================================\n")
+print(
+    "====================================\nWhat would you like to know about SaaS (Software as a Service)? (type ':q' to exit, ':r' to reset chat):\n"
+)
+
+chat_messages = []
 
 while True:
     # Prompt the user for input in the console
     query = None
     while not query:
-        query = input(
-            "What would you like to know about SaaS (Software as a Service)? (type 'thank you' to exit):\n >> "
-        )
+        query = input(">> ")
 
     # Check if the user wants to exit
-    if query.lower() == "thank you":
-        print("You're welcome!")
+    if query.lower() == ":q":
         break
+
+    # Check if the user wants to reset the chat
+    if query.lower() == ":r":
+        chat_messages = []
+
+    # Add the user's input to the chat messages
+    chat_messages.append({"speaker": "user", "message": query})
 
     # Query the engine with the user's input
     response = query_engine.query(query)
 
+    # Add the response to the chat messages
+    chat_messages.append({"speaker": "chatbot", "message": response})
+
     # Print the response
-    print(f"\n{response}\n")
+    print(f"\nAI: {response}\n")
