@@ -26,6 +26,7 @@ All env variables goes to .env ( cp `example.env` to `.env` and paste required e
 
 ### Add data
 Add some PDF files inside `data/` and include parsing instructions within `data/parsing_instructions.txt`
+I used [saasbook 1.2.2 (English)](https://saasbook.info/archive) for my testing.
 
 ### Run the python files (following the video to run step by step is recommended)
 ```
