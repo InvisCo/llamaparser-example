@@ -24,7 +24,10 @@ pip install -r requirements.txt
 ### Environment variables
 All env variables goes to .env ( cp `example.env` to `.env` and paste required env variables)
 
-### Run the python files (following the vieoo to run step by step is recommended)
+### Add data
+Add some PDF files inside `data/` and include parsing instructions within `data/parsing_instructions.txt`
+
+### Run the python files (following the video to run step by step is recommended)
 ```
 python3 parser-qdrant-groq.py
 ```
