@@ -142,12 +142,13 @@ while True:
     # Check if the user wants to reset the chat
     if query.lower() == ":r":
         chat_messages = []
+        continue
 
     # Add the user's input to the chat messages
     chat_messages.append({"speaker": "user", "message": query})
 
     # Query the engine with the user's input
-    response = query_engine.query(query)
+    response = query_engine.query(str(chat_messages))
 
     # Add the response to the chat messages
     chat_messages.append({"speaker": "chatbot", "message": response})
